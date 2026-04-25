@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { fetchThreats } from './store/slices/threatSlice';
 import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
-import Dashboard from './pages/Dashboard';
-import Threats from './pages/Threats';
-import ThreatDetail from './pages/ThreatDetail';
-import Settings from './pages/Settings';
 import { useAutoRefresh } from './hooks/useAutoRefresh';
+
+// Lazy load pages
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const Threats = lazy(() => import('./pages/Threats'));
+const ThreatDetail = lazy(() => import('./pages/ThreatDetail'));
+const Settings = lazy(() => import('./pages/Settings'));
 
 function App() {
   const dispatch = useDispatch();
@@ -27,12 +29,14 @@ function App() {
           <div className={`${darkMode ? 'bg-gray-950 text-white' : 'bg-white'} min-h-screen transition-colors`}>
             <Navbar />
             <main className="max-w-7xl mx-auto px-4 py-6">
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/threats" element={<Threats />} />
-                <Route path="/threat/:id" element={<ThreatDetail />} />
-                <Route path="/settings" element={<Settings />} />
-              </Routes>
+              <Suspense fallback={<div className="text-center py-12">Loading...</div>}>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="/threats" element={<Threats />} />
+                  <Route path="/threat/:id" element={<ThreatDetail />} />
+                  <Route path="/settings" element={<Settings />} />
+                </Routes>
+              </Suspense>
             </main>
           </div>
         </div>
