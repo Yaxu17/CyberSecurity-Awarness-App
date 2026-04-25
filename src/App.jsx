@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useAutoRefresh } from './hooks/useAutoRefresh';
 
+
 // Lazy load pages - CORRECT syntax
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
 const Threats = lazy(() => import('./pages/Threats.jsx'));
