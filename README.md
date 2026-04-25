@@ -188,46 +188,6 @@ The app automatically handles rate limiting with intelligent caching and paginat
 
 ---
 
-## 🚀 Deployment
-
-### Deploy to Vercel (Recommended)
-
-#### Option 1: Using Vercel CLI
-```bash
-npm install -g vercel
-vercel
-# Follow the prompts
-```
-
-#### Option 2: Using GitHub Integration
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com)
-3. Click "Add New" → "Project"
-4. Select your repository
-5. Click "Deploy"
-
-**Your app will be live at**: `https://cybersecurity-dashboard-[username].vercel.app`
-
----
-
-### Deploy to Netlify
-
-#### Option 1: Using Netlify CLI
-```bash
-npm install -g netlify-cli
-npm run build
-netlify deploy --prod --dir=dist
-```
-
-#### Option 2: Using Netlify UI
-1. Build locally: `npm run build`
-2. Go to [app.netlify.com](https://app.netlify.com)
-3. Drag & drop the `dist` folder
-4. Your app is live!
-
-**Your app will be at**: `https://cybersecurity-dashboard-[random].netlify.app`
-
----
 
 ## 📊 Performance Optimizations
 
@@ -269,18 +229,6 @@ netlify deploy --prod --dir=dist
 
 ---
 
-## 🚧 Future Enhancements
-
-- User authentication
-- Custom threat feeds
-- Threat export (CSV/PDF)
-- Browser notifications
-- Mobile app (React Native)
-- Advanced analytics
-- Threat comparison tool
-
----
-
 ## 📚 Resources
 
 - [React Documentation](https://react.dev)
@@ -298,21 +246,6 @@ This project is open source and available under the MIT License.
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Report bugs
-- Suggest features
-- Submit pull requests
-
----
-
-## 📞 Contact
-
-- **GitHub**: [@Yaxu17](https://github.com/Yaxu17)
-- **Email**: For inquiries, please open an issue
-
----
 
 ## ✨ Capstone Project Requirements
 
@@ -326,6 +259,9 @@ Contributions are welcome! Feel free to:
 ✅ **Code Quality**: Clean, documented, production-ready  
 
 ---
+## Deployment🚀
+
+  **This Project is Live at ->** (https://cybersecurityawarnessapp.netlify.app)
 
 **Built with ❤️ for cybersecurity awareness**
 # CyberSecurity-Awarness-App
