@@ -6,11 +6,21 @@ import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useAutoRefresh } from './hooks/useAutoRefresh';
 
-// Lazy load pages
-const Dashboard = lazy(() => import('./pages/Dashboard'));
-const Threats = lazy(() => import('./pages/Threats'));
-const ThreatDetail = lazy(() => import('./pages/ThreatDetail'));
-const Settings = lazy(() => import('./pages/Settings'));
+// Lazy load pages - CORRECT syntax
+const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
+const Threats = lazy(() => import('./pages/Threats.jsx'));
+const ThreatDetail = lazy(() => import('./pages/ThreatDetail.jsx'));
+const Settings = lazy(() => import('./pages/Settings.jsx'));
+
+// Loading component
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="text-center">
+      <div className="animate-spin inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mb-4"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -29,12 +39,13 @@ function App() {
           <div className={`${darkMode ? 'bg-gray-950 text-white' : 'bg-white'} min-h-screen transition-colors`}>
             <Navbar />
             <main className="max-w-7xl mx-auto px-4 py-6">
-              <Suspense fallback={<div className="text-center py-12">Loading...</div>}>
+              <Suspense fallback={<LoadingFallback />}>
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/threats" element={<Threats />} />
                   <Route path="/threat/:id" element={<ThreatDetail />} />
                   <Route path="/settings" element={<Settings />} />
+                  <Route path="*" element={<div className="text-center py-12">Page not found</div>} />
                 </Routes>
               </Suspense>
             </main>
